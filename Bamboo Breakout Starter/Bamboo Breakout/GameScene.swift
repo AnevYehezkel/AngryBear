@@ -19,7 +19,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isFingerOnPaddle = false
     
     func  randomFloat (from: CGFloat, to: CGFloat) -> CGFloat {
-        let rand: CGFloat = CGFloat (Float(arc4random()) / 0xFFFFFFFF )
+        let rand = CGFloat (Double(arc4random()) / 0xFFFFFFFF )
         return (rand) * (to - from) + from
     }
     
@@ -30,7 +30,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         GameOver(scene: self)])
     
     func breakBlock(node: SKNode) {
-        let particles = SKEmitterNode(fileNamed: "BrokenPlataform")!
+        let particles = SKEmitterNode(fileNamed: "BrokenPlatform")!
         particles.position = node.position
         particles.zPosition = 3
         addChild(particles)
@@ -93,7 +93,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         paddle.physicsBody!.categoryBitMask = PaddleCategory
         borderBody.categoryBitMask = BorderCategory
         
-        ball.physicsBody! .contactTestBitMask = BottomCategory | BottomCategory
+        ball.physicsBody! .contactTestBitMask = BottomCategory | BlockCategory
         
         let gameMessage = SKSpriteNode(imageNamed: "TapToPlay")
         gameMessage.name = GameMessageName

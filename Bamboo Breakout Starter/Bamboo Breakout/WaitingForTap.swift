@@ -25,7 +25,7 @@ class WaitingForTap: GKState {
     override func willExit(to nextState: GKState) {
         if nextState is Playing {
             let scale = SKAction.scale(to: 0, duration: 0.4)
-            scene .childNode(withName: GameMessageName)!.run(scale)
+            scene.childNode(withName: GameMessageName)!.run(scale)
         }
     }
     
